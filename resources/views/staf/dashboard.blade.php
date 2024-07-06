@@ -22,7 +22,7 @@
             </button>
             <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
                 <a href="{{ route('staf.profil.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Edit Profil</a>
-                <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Log Out</a>
+                <a href="/logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Log Out</a>
             </div>
         </div>
       </nav>

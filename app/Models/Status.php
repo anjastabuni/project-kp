@@ -16,6 +16,6 @@ class Status extends Model
 
     public function proposals()
     {
-        return $this->hasOne(Proposal::class, 'id_status', 'id_status');
+        return $this->hasMany(Proposal::class, 'id_status', 'id_status');
     }
 }

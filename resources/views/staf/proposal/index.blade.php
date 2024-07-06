@@ -43,7 +43,7 @@
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->tgl_pengajuan }}</td>
                     <td class="py-3 px-4 border border-gray-300 flex space-x-2">
                         <a href="{{ route('staf.proposal.edit', $proposal->id_proposal) }}" class="bg-yellow-500 text-gray-800 px-3 py-1 rounded hover:bg-yellow-600 transition-colors duration-300">Edit</a>
-                        <form action="{{ route('staf.proposal.destroy', $proposal->id_proposal) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus proposal ini?');" class="inline-block">
+                        <form action="{{ route('staf.proposal.destroy', $proposal->id_proposal) }}" method="POST"  class="delete-form">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors duration-300">Hapus</button>

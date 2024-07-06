@@ -72,8 +72,9 @@ class ProposalController extends Controller
      */
     public function edit($id_proposal)
     {
-        $proposal = Proposal::findOrFail($id_proposal);
-        return view('staf.proposal.edit', compact('proposal'));
+        $proposal = Proposal::with('mahasiswa', 'status')->findOrFail($id_proposal);
+        $statuses = Status::all(); // Mendapatkan semua status
+        return view('staf.proposal.edit', compact('proposal', 'statuses'));
     }
 
     /**
@@ -82,19 +83,24 @@ class ProposalController extends Controller
     public function update(Request $request, $id_proposal)
     {
         $request->validate([
+            'id_mahasiswa' => 'required|string|max:8|exists:mahasiswas,npm',
             'judul' => 'required|string|max:255',
             'pembimbing' => 'required|string|max:50',
             'tgl_pengajuan' => 'required|date',
+            'id_status' => 'required|string|max:6|exists:statuses,id_status',  // Validasi untuk id_status
         ]);
 
         $proposal = Proposal::findOrFail($id_proposal);
+        $proposal->id_mahasiswa = $request->id_mahasiswa;
         $proposal->judul = $request->judul;
         $proposal->pembimbing = $request->pembimbing;
         $proposal->tgl_pengajuan = $request->tgl_pengajuan;
+        $proposal->id_status = $request->id_status;  // Menyimpan id_status
         $proposal->save();
 
         return redirect()->route('staf.proposal.index')->with('success', 'Proposal berhasil diperbarui');
     }
+
 
     /**
      * Remove the specified resource from storage.

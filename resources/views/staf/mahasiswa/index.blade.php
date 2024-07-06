@@ -1,6 +1,6 @@
 <x-layout>
   <div class="container mx-auto mt-10 px-4">
-      <h1 class="text-3xl font-bold mb-6 text-gray-900">Data Mahasiswa Proposal</h1>
+      <h1 class="text-3xl font-bold mb-6 text-gray-900">Data Mahasiswa</h1>
       
       <div class="flex justify-between items-center mb-6">
           <a href="{{ route('staf.mahasiswa.create') }}" class="bg-yellow-500 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300">Tambah Mahasiswa</a>
@@ -35,7 +35,7 @@
                   <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->telp }}</td>
                   <td class="py-3 px-4 border border-gray-300 flex space-x-2">
                       <a href="{{ route('staf.mahasiswa.edit', $mahasiswa->npm) }}" class="bg-yellow-500 text-gray-800 px-3 py-1 rounded hover:bg-yellow-600 transition-colors duration-300">Edit</a>
-                      <form action="{{ route('staf.mahasiswa.destroy', $mahasiswa->npm) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data mahasiswa ini?');" class="inline-block">
+                      <form action="{{ route('staf.mahasiswa.destroy', $mahasiswa->npm) }}" method="POST"  class="delete-form">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors duration-300">Hapus</button>
@@ -45,7 +45,5 @@
               @endforeach
           </tbody>
       </table>
-
-     
   </div>
 </x-layout>

@@ -1,0 +1,35 @@
+@media print {
+    /* Hide all elements by default */
+    body * {
+        visibility: hidden;
+    }
+    /* Show the container and its children */
+    .container,
+    .container * {
+        visibility: visible;
+    }
+    /* Specifically hide the other headers and footers */
+    .print-header,
+    .print-footer {
+        display: block !important;
+        visibility: visible;
+    }
+    .print-header {
+        visibility: visible;
+    }
+    /* Ensure the table is fully visible */
+    table {
+        visibility: visible;
+    }
+    /* Position the container at the top left */
+    .container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    /* Hide filter and search elements */
+    .print-hide {
+        display: none;
+    }
+}

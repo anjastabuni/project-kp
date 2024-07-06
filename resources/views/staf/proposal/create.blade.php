@@ -31,7 +31,7 @@
                                 value="{{ old('id_mahasiswa') }}"
                             />
                             @error('id_mahasiswa')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk id_mahasiswa -->
+                                <span class="text-red-500 text-sm">{{ 'NIM tidak ditemukan' }}</span>  <!-- Menambahkan pesan error untuk id_mahasiswa -->
                             @enderror
                         </label>
                     </div>
@@ -46,7 +46,7 @@
                                 value="{{ old('judul') }}"
                             />
                             @error('judul')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk judul -->
+                                <span class="text-red-500 text-sm">{{ 'Judul Wajib Dimasukan' }}</span>  <!-- Menambahkan pesan error untuk judul -->
                             @enderror
                         </label>
                     </div>
@@ -93,7 +93,7 @@
                                 @endforeach
                             </select>
                             @error('id_status')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk id_status -->
+                                <span class="text-red-500 text-sm">{{ 'Pilih Status Proposal' }}</span>  <!-- Menambahkan pesan error untuk id_status -->
                             @enderror
                         </label>
                     </div>

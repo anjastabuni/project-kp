@@ -19,13 +19,13 @@ class DummyUsersSeeder extends Seeder
                 'name' => 'Ketua Prodi',
                 'email' => 'ketuaprodi411@gmail.com',
                 'role' => 'ketua_prodi',
-                'password' => Hash::make('password')
+                'password' => Hash::make('12345678')
             ],
             [
                 'name' => 'Staf Prodi',
                 'email' => 'stafprodi411@gmail.com',
                 'role' => 'staf',
-                'password' => Hash::make('password')
+                'password' => Hash::make('12345678')
             ],
         ];
 

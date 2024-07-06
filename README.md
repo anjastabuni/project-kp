@@ -21,12 +21,12 @@ Sistem Pendataan Proposal adalah aplikasi berbasis web yang dirancang untuk memb
 
 ## Tangkapan Layar Aplikasi
 
-![Dashboard](path/to/dashboard-image.png)
+![Dashboard](img/dashboard.png)
 *Gambar 1: Tampilan Dashboard*
 
-![Manajemen Proposal](path/to/proposal-management-image.png)
+![Manajemen Proposal](img/manajemen-proposal.png)
 *Gambar 2: Tampilan Manajemen Proposal*
 
-![Cetak Laporan](path/to/print-report-image.png)
+![Cetak Laporan](img/cetak-laporan.png)
 *Gambar 3: Tampilan Cetak Laporan*
 

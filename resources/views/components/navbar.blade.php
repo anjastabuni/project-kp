@@ -41,11 +41,11 @@
       <i class="fas fa-archive text-gray-400 mr-3"></i>
       <span>Data Proposal</span>
     </a>
-    <a href="#" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
+    <a href="{{ route('staf.profil.index') }}" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
       <i class="fas fa-user-cog text-gray-400 mr-3"></i>
       <span>Manajemen Akun</span>
     </a>
-    <a href="/" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
+    <a href="/logout" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
       <i class="fas fa-sign-out-alt text-gray-400 mr-3"></i>
       <span>Keluar</span>
     </a>

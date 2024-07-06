@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\Status;
-use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class AdminController extends Controller
 {
     public function index()
+    {
+        return view('staf.dashboard'); // Pastikan view ini ada
+    }
+    public function staf()
     {
         $totalMahasiswa = Mahasiswa::count();
         $totalProposal = Proposal::count();
@@ -21,9 +25,9 @@ class DashboardController extends Controller
         $selesaiProposal = Proposal::where('id_status', $acceptedStatusId)->count();
         $prosesProposal = Proposal::where('id_status', $inProgressStatusId)->count();
 
-        return view('staf.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal',));
+        return view('staf.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal'));
     }
-    public function ketua()
+    public function ketua_prodi()
     {
         $totalMahasiswa = Mahasiswa::count();
         $totalProposal = Proposal::count();
@@ -34,9 +38,5 @@ class DashboardController extends Controller
         $prosesProposal = Proposal::where('id_status', $inProgressStatusId)->count();
 
         return view('ketua-prodi.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal'));
-    }
-    public function login()
-    {
-        return view('login');
     }
 }

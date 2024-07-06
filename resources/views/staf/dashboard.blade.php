@@ -15,14 +15,14 @@
         <div class="relative" x-data="{ open: false }">
             <button @click="open = !open" class="flex items-center space-x-2">
                 <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/150" alt="Profile Picture">
-                <span class="text-gray-900">Jelky Walia</span>
+                <span class="text-gray-900">Staf</span>
                 <svg class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Edit Profil</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Log Out</a>
+                <a href="{{ route('staf.profil.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Edit Profil</a>
+                <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Log Out</a>
             </div>
         </div>
       </nav>
@@ -31,12 +31,12 @@
   <!-- Content -->
   <div class="space-y-8">
     <!-- Welcome Card -->
-    <div class="p-6 bg-white shadow-md rounded-lg">
-      <h2 class="text-xl font-bold text-gray-800">Selamat Datang 
-        <span class="underline hover:bg-yellow-200 hover:text-yellow-800 px-2 py-1 rounded-lg ml-2">Rebly Megib Tabuni</span>
-      </h2>
+    <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+      <h2 class="text-2xl font-light text-gray-800">Selamat Datang Di</h2>
+      <h1 class="text-3xl font-bold text-yellow-600 underlin py-1 rounded-lg mt-2">Aplikasi Pendataan Proposal</h1>
       <p class="text-gray-600 mt-2">Anda login sebagai Staf Prodi Teknik Informatika</p>
     </div>
+
 
 
     
@@ -48,7 +48,7 @@
             <i class="fas fa-users text-blue-500 text-3xl"></i>
             <div>
                 <h2 class="text-xl font-bold text-gray-800">Total Mahasiswa</h2>
-                <p class="mt-2 text-gray-600 text-lg">12,345</p>
+                <p class="mt-2 text-gray-600 text-lg">{{ $totalMahasiswa }}</p>
             </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
           <i class="fas fa-file-alt text-red-500 text-3xl"></i>
           <div>
               <h2 class="text-xl font-bold text-gray-800">Total Proposal</h2>
-              <p class="mt-2 text-gray-600 text-lg">12,345</p>
+              <p class="mt-2 text-gray-600 text-lg">{{ $totalProposal }}</p>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
             <i class="fas fa-check-circle text-green-500 text-3xl"></i>
             <div>
                 <h2 class="text-xl font-bold text-gray-800">Selesai Proposal</h2>
-                <p class="mt-2 text-gray-600 text-lg">1,234</p>
+                <p class="mt-2 text-gray-600 text-lg">{{ $selesaiProposal }}</p>
             </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
           <i class="fas fa-spinner text-yellow-500 text-3xl"></i>
           <div>
               <h2 class="text-xl font-bold text-gray-800">Proses Proposal</h2>
-              <p class="mt-2 text-gray-600 text-lg">1,234</p>
+              <p class="mt-2 text-gray-600 text-lg">{{ $prosesProposal }}</p>
           </div>
         </div>
       </div>

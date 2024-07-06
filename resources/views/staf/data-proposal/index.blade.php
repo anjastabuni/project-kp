@@ -1,9 +1,23 @@
 <x-layout>
     <div class="container mx-auto mt-10">
-        <h1 class="text-2xl font-bold mb-5">Data Proposal Mahasiswa</h1>
+        <h1 class="text-2xl font-bold mb-5 text-center">Data Proposal Mahasiswa</h1>
         
         <div class="flex justify-between items-center mb-3">
-            <input type="text" placeholder="Cari Mahasiswa..." class="my-5 px-4 py-2 border rounded-lg w-1/2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <form action="{{ route('staf.data-proposal.index') }}" method="GET">
+                <div class="flex items-center mb-4">
+                    <input 
+                        type="text" 
+                        name="search" 
+                        value="{{ request('search') }}" 
+                        placeholder="Cari Mahasiswa berdasarkan NPM atau Nama..." 
+                        class="my-5 px-4 py-2 border rounded-lg w-full md:w-1/2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    />
+                    <button type="submit" class="ml-2 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        Cari
+                    </button>
+                </div>
+            </form>
+            
             <div class="flex space-x-4">
                 <form action="{{ route('staf.data-proposal.index') }}" method="GET">
                     <select name="tahun" class="my-5 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" onchange="this.form.submit()">

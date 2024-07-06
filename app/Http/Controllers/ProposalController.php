@@ -14,8 +14,8 @@ class ProposalController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-
     {
+
         $no = 1;
         $proposals = Proposal::all();
         return view('staf.proposal.index', compact('proposals', 'no'));

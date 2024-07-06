@@ -18,6 +18,8 @@
                 {{ $slot }}
             </main>
     </div>
-   
+    <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+    @yield('scripts')
 </body>
 </html>

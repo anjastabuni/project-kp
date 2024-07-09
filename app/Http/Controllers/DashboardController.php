@@ -8,6 +8,7 @@ use App\Models\Proposal;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -21,8 +22,11 @@ class DashboardController extends Controller
         $selesaiProposal = Proposal::where('id_status', $acceptedStatusId)->count();
         $prosesProposal = Proposal::where('id_status', $inProgressStatusId)->count();
 
-        return view('staf.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal',));
+        $users = Auth::user(); // Mengambil data user yang sedang login
+
+        return view('staf.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal', 'users'));
     }
+
     public function ketua()
     {
         $totalMahasiswa = Mahasiswa::count();
@@ -33,8 +37,10 @@ class DashboardController extends Controller
         $selesaiProposal = Proposal::where('id_status', $acceptedStatusId)->count();
         $prosesProposal = Proposal::where('id_status', $inProgressStatusId)->count();
 
-        return view('ketua-prodi.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal'));
+        $user = Auth::user();
+        return view('ketua-prodi.dashboard', compact('totalMahasiswa', 'totalProposal', 'selesaiProposal', 'prosesProposal', 'user'));
     }
+
     public function login()
     {
         return view('login');

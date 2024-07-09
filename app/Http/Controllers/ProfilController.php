@@ -5,30 +5,51 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('staf.profil.index', compact('users'));
+        $user = auth()->user();
+        return view('staf.profil.index', compact('user'));
     }
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('staf.profil.edit', compact('user')); // Tampilkan form edit untuk pengguna
+        $user = User::findOrFail($id);
+        return view('staf.profil.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'role' => 'required|string|in:staff,ketua_prodi', // Validasi role
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'role' => 'required|string|max:255',
+            'profil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user->update($request->only('name', 'email', 'role')); // Update data pengguna
+        $user = User::findOrFail($id);
 
-        return redirect()->route('staf.profil.index')->with('success', 'User updated successfully.');
+        if ($request->hasFile('profil')) {
+            // Hapus foto profil lama jika ada
+            if ($user->profil && Storage::exists('img/' . $user->profil)) {
+                Storage::delete('img/' . $user->profil);
+            }
+            // Simpan foto profil baru
+            $filename = time() . '.' . $request->profil->extension();
+            $request->profil->move(public_path('img'), $filename);
+            $user->profil = $filename;
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'profil' => $user->profil ?? $user->profil, // Tetap simpan profil lama jika tidak ada yang baru
+        ]);
+
+        return redirect()->route('staf.profil.index', $user->id)->with('success', 'Profil berhasil diperbarui.');
     }
 
     public function destroy(User $user)

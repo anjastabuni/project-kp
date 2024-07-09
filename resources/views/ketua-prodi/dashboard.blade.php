@@ -14,7 +14,7 @@
         
         <div class="relative" x-data="{ open: false }">
             <button @click="open = !open" class="flex items-center space-x-2">
-                <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/150" alt="Profile Picture">
+                <img class="w-8 h-8 rounded-full" src="{{ asset('img/' . Auth::user()->profil) }}" alt="Profile Picture">
                 <span class="text-gray-900">{{ Auth::user()->name }}</span></span>
                 <svg class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>

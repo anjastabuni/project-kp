@@ -4,23 +4,26 @@
         
         <div class="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0 md:space-x-4">
             <a href="{{ route('staf.proposal.create') }}" class="bg-yellow-500 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300">
-                Tambah Data
+                <i class="fa-solid fa-plus"></i> Tambah Proposal
             </a>
             
             <form action="" method="GET" class="relative w-full md:w-1/2 lg:w-1/3">
                 <input 
                     type="text" 
                     name="search" 
-                    value="" 
-                    placeholder="Cari berdasarkan ID Proposal atau Judul Proposal..." 
+                    value="{{ request('search') }}" 
+                    placeholder="Cari berdasarkan judul Proposal atau NPM" 
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
-                <button 
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-500"></i>
+                </div>
+                {{-- <button 
                     type="submit" 
                     class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-yellow-500 text-white px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 >
                     Cari
-                </button>
+                </button> --}}
             </form>
         </div>
         
@@ -28,6 +31,7 @@
             <thead class="bg-gray-900 text-white">
                 <tr>
                     <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">No</th>
+                    <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">NIM</th>
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Judul Proposal</th>
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Dosen Pembimbing</th>
                     <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Tanggal Pengajuan</th>
@@ -38,10 +42,11 @@
                 @foreach ($proposals as $proposal)
                 <tr class="hover:bg-gray-50 transition-colors duration-200">
                     <td class="py-3 px-4 border border-gray-300">{{ $no++ }}</td>
+                    <td class="py-3 px-4 border border-gray-300">{{ $proposal->id_mahasiswa }}</td>
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->judul }}</td>
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->pembimbing }}</td>
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->tgl_pengajuan }}</td>
-                    <td class="py-3 px-4 border border-gray-300 flex space-x-2">
+                    <td class="py-3 px-4 border  border-gray-300 flex space-x-2">
                         <a href="{{ route('staf.proposal.edit', $proposal->id_proposal) }}" class="bg-yellow-500 text-gray-800 px-3 py-1 rounded hover:bg-yellow-600 transition-colors duration-300">Edit</a>
                         <form action="{{ route('staf.proposal.destroy', $proposal->id_proposal) }}" method="POST"  class="delete-form">
                             @csrf

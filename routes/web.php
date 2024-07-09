@@ -49,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
 
     // routing status
     Route::get('staf/status', [StatusController::class, 'index'])->name('staf.status.index');
+    Route::get('staf/status/create', [StatusController::class, 'create'])->name('staf.status.create');
+    Route::get('staf/status/{id_status}/edit', [StatusController::class, 'edit'])->name('staf.status.edit');
+    Route::put('staf/status/{id_status}', [StatusController::class, 'update'])->name('staf.status.update');
+    Route::post('staf/status', [StatusController::class, 'store'])->name('staf.status.store');
 
     // routing ketua prodi
     Route::get('ketua-prodi/laporan', [LaporanController::class, 'index'])->name('ketua-prodi.laporan.index');
@@ -58,12 +62,12 @@ Route::middleware(['auth'])->group(function () {
 
     // profill
     Route::get('staf/profil', [ProfilController::class, 'index'])->name('staf.profil.index');
-    Route::get('users/{user}/edit', [ProfilController::class, 'edit'])->name('users.edit');
-    Route::patch('users/{user}', [ProfilController::class, 'update'])->name('users.update');
-    Route::delete('users/{user}', [ProfilController::class, 'destroy'])->name('users.destroy');
+    Route::get('staf/profil/{id}/edit', [ProfilController::class, 'edit'])->name('staf.profil.edit');
+    Route::put('staf/profil/{id}', [ProfilController::class, 'update'])->name('staf.profil.update');
+    Route::delete('staf/profil/{id}', [ProfilController::class, 'destroy'])->name('staf.profil.destroy');
 
     Route::get('ketua-prodi/profil', [ProfilKetuaController::class, 'index'])->name('ketua-prodi.profil.index');
-    Route::get('ketua-prodi/{user}/edit', [ProfilController::class, 'edit'])->name('ketua-prodi.profil.edit');
-    Route::patch('ketua-prodi/{user}', [ProfilController::class, 'update'])->name('ketua-prodi.profil.update');
-    Route::delete('ketua-prodi/{user}', [ProfilController::class, 'destroy'])->name('ketua-prodi.profil.destroy');
+    Route::get('ketua-prodi/profil/{id}/edit', [ProfilKetuaController::class, 'edit'])->name('ketua-prodi.profil.edit');
+    Route::put('ketua-prodi/profil/{id}', [ProfilKetuaController::class, 'update'])->name('ketua-prodi.profil.update');
+    Route::delete('ketua-prodi/profil/{id}', [ProfilKetuaController::class, 'destroy'])->name('ketua-prodi.profil.destroy');
 });

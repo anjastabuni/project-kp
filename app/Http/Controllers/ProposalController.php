@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proposal;
 use App\Models\Status;
+use App\Models\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,12 +14,19 @@ class ProposalController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $no = 1;
         $proposals = Proposal::all();
-        return view('staf.proposal.index', compact('proposals', 'no'));
+        $query = Proposal::query();
+        $search = $request->input('search');
+        if ($search) {
+            $query->where('judul', 'LIKE', "%{$search}%")
+                ->orWhere('id_mahasiswa', 'LIKE', "%{$search}%");
+        }
+        $proposals = $query->get();
+        return view('staf.proposal.index', compact('proposals', 'no', 'search'));
     }
 
     /**
@@ -36,7 +44,6 @@ class ProposalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_proposal' => 'required|string|max:8|unique:proposals,id_proposal',
             'id_mahasiswa' => 'required|string|max:8|exists:mahasiswas,npm',
             'judul' => 'required|string|max:255',
             'pembimbing' => 'required|string|max:50',
@@ -44,17 +51,32 @@ class ProposalController extends Controller
             'id_status' => 'required|string|max:6|exists:statuses,id_status',  // Validasi untuk id_status
         ]);
 
+        // Ambil mahasiswa berdasarkan npm
+        $mahasiswa = Mahasiswa::where('npm', $request->id_mahasiswa)->firstOrFail();
+
+        // Ambil 3 digit terakhir dari npm untuk id_proposal
+        $threeDigits = substr($request->id_mahasiswa, -3);
+        $id_proposal = 'P-' . $threeDigits;
+
+        // Pastikan id_proposal yang dihasilkan unik
+        while (Proposal::where('id_proposal', $id_proposal)->exists()) {
+            $threeDigits = str_pad((int) $threeDigits + 1, 3, '0', STR_PAD_LEFT);
+            $id_proposal = 'P-' . $threeDigits;
+        }
+
+        // Buat proposal baru
         Proposal::create([
-            'id_proposal' => $request->id_proposal,
+            'id_proposal' => $id_proposal,
             'id_mahasiswa' => $request->id_mahasiswa,
             'judul' => $request->judul,
             'pembimbing' => $request->pembimbing,
             'tgl_pengajuan' => $request->tgl_pengajuan,
-            'id_status' => $request->id_status,  // Menyimpan id_status
+            'id_status' => $request->id_status,
         ]);
 
         return redirect()->route('staf.proposal.index')->with('success', 'Proposal berhasil ditambahkan');
     }
+
 
 
 
@@ -87,7 +109,7 @@ class ProposalController extends Controller
             'judul' => 'required|string|max:255',
             'pembimbing' => 'required|string|max:50',
             'tgl_pengajuan' => 'required|date',
-            'id_status' => 'required|string|max:6|exists:statuses,id_status',  // Validasi untuk id_status
+            'id_status' => 'required|string|max:6|exists:statuses,id_status',
         ]);
 
         $proposal = Proposal::findOrFail($id_proposal);
@@ -95,7 +117,7 @@ class ProposalController extends Controller
         $proposal->judul = $request->judul;
         $proposal->pembimbing = $request->pembimbing;
         $proposal->tgl_pengajuan = $request->tgl_pengajuan;
-        $proposal->id_status = $request->id_status;  // Menyimpan id_status
+        $proposal->id_status = $request->id_status;
         $proposal->save();
 
         return redirect()->route('staf.proposal.index')->with('success', 'Proposal berhasil diperbarui');

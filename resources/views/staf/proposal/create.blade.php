@@ -5,21 +5,6 @@
             @csrf
             <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-                    <!-- ID Proposal -->
-                    <div class="col-span-1">
-                        <label class="block">
-                            <span class="text-gray-700">ID Proposal</span>
-                            <input
-                                type="text" name="id_proposal"
-                                class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
-                                placeholder="Masukkan ID Proposal"
-                                value="{{ old('id_proposal') }}"
-                            />
-                            @error('id_proposal')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk id_proposal -->
-                            @enderror
-                        </label>
-                    </div>
                     <!-- NPM -->
                     <div class="col-span-1">
                         <label class="block">
@@ -31,7 +16,7 @@
                                 value="{{ old('id_mahasiswa') }}"
                             />
                             @error('id_mahasiswa')
-                                <span class="text-red-500 text-sm">{{ 'NIM tidak ditemukan' }}</span>  <!-- Menambahkan pesan error untuk id_mahasiswa -->
+                                <span class="text-red-500 text-sm">{{ 'NIM tidak ditemukan' }}</span>
                             @enderror
                         </label>
                     </div>
@@ -46,7 +31,7 @@
                                 value="{{ old('judul') }}"
                             />
                             @error('judul')
-                                <span class="text-red-500 text-sm">{{ 'Judul Wajib Dimasukan' }}</span>  <!-- Menambahkan pesan error untuk judul -->
+                                <span class="text-red-500 text-sm">{{ 'Judul Wajib Dimasukan' }}</span>
                             @enderror
                         </label>
                     </div>
@@ -61,7 +46,7 @@
                                 value="{{ old('pembimbing') }}"
                             />
                             @error('pembimbing')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk pembimbing -->
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </label>
                     </div>
@@ -75,7 +60,7 @@
                                 value="{{ old('tgl_pengajuan') }}"
                             />
                             @error('tgl_pengajuan')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>  <!-- Menambahkan pesan error untuk tgl_pengajuan -->
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </label>
                     </div>
@@ -93,7 +78,7 @@
                                 @endforeach
                             </select>
                             @error('id_status')
-                                <span class="text-red-500 text-sm">{{ 'Pilih Status Proposal' }}</span>  <!-- Menambahkan pesan error untuk id_status -->
+                                <span class="text-red-500 text-sm">{{ 'Pilih Status Proposal' }}</span>
                             @enderror
                         </label>
                     </div>

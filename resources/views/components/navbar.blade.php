@@ -21,14 +21,15 @@
         </svg>
       </a>
       <div x-show="open" @click.away="open = false" x-transition class="bg-gray-800 text-white py-2 mt-1 rounded-md w-full z-10">
-        <a href="{{ route('staf.proposal.index') }}" class="flex items-center py-2.5 px-4 hover:bg-gray-700 transition duration-200">
-          <i class="fas fa-file-alt text-gray-400 mr-3"></i>
-          <span>Proposal</span>
-        </a>
         <a href="{{ route('staf.mahasiswa.index') }}" class="flex items-center py-2.5 px-4 hover:bg-gray-700 transition duration-200">
           <i class="fas fa-user-graduate text-gray-400 mr-3"></i>
           <span>Mahasiswa</span>
         </a>
+        <a href="{{ route('staf.proposal.index') }}" class="flex items-center py-2.5 px-4 hover:bg-gray-700 transition duration-200">
+          <i class="fas fa-file-alt text-gray-400 mr-3"></i>
+          <span>Proposal</span>
+        </a>
+        
         <a href="{{ route('staf.status.index') }}" class="flex items-center py-2.5 px-4 hover:bg-gray-700 transition duration-200">
           <i class="fas fa-clipboard-list text-gray-400 mr-3"></i>
           <span>Status</span>
@@ -43,7 +44,7 @@
     </a>
     <a href="{{ route('staf.profil.index') }}" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
       <i class="fas fa-user-cog text-gray-400 mr-3"></i>
-      <span>Manajemen Akun</span>
+      <span>Manajemen Profil</span>
     </a>
     <a href="/logout" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
       <i class="fas fa-sign-out-alt text-gray-400 mr-3"></i>

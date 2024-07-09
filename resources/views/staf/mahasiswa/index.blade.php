@@ -3,13 +3,13 @@
       <h1 class="text-3xl font-bold mb-6 text-gray-900">Data Mahasiswa</h1>
       
       <div class="flex justify-between items-center mb-6">
-          <a href="{{ route('staf.mahasiswa.create') }}" class="bg-yellow-500 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300">Tambah Mahasiswa</a>
+          <a href="{{ route('staf.mahasiswa.create') }}" class="bg-yellow-500 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition-colors duration-300"><i class="fa-solid fa-plus"></i> Tambah Mahasiswa</a>
           <div class="relative w-full md:w-1/3">
-            <input type="text" placeholder="Cari Proposal..." class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <i class="fas fa-search text-gray-500"></i>
+                <input type="text" placeholder="Cari Proposal..." class="w-full px-4 py-2 border  border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-500"></i>
+                </div>
             </div>
-        </div>
       </div>
       
       <table class="min-w-full bg-white mt-5 border border-gray-300 rounded-lg overflow-hidden">

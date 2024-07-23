@@ -70,7 +70,7 @@
                             <span class="text-gray-700">Status Proposal</span>
                             <select
                                 name="id_status"
-                                class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
+                                class="mt-1 py-2 pl-3 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
                             >
                                 <option value="">Pilih Status</option>
                                 @foreach($statuses as $status)

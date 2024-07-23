@@ -34,7 +34,7 @@
     <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h2 class="text-2xl font-light text-gray-800">Selamat Datang Di</h2>
       <h1 class="text-3xl font-bold text-yellow-600 underlin py-1 rounded-lg mt-2">Aplikasi Pendataan Proposal</h1>
-      <p class="text-gray-600 mt-2">Anda login sebagai Staf Prodi Teknik Informatika</p>
+      <p class="text-gray-600 mt-2">Anda login sebagai Ketua Prodi Teknik Informatika</p>
     </div>
   
 

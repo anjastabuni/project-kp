@@ -54,14 +54,15 @@ class ProposalController extends Controller
         // Ambil mahasiswa berdasarkan npm
         $mahasiswa = Mahasiswa::where('npm', $request->id_mahasiswa)->firstOrFail();
 
-        // Ambil 3 digit terakhir dari npm untuk id_proposal
+        // Ambil 2 digit pertama dan 3 digit terakhir dari npm untuk id_proposal
+        $twoDigits = substr($request->id_mahasiswa, 0, 2);
         $threeDigits = substr($request->id_mahasiswa, -3);
-        $id_proposal = 'P-' . $threeDigits;
+        $id_proposal = 'P-' . $twoDigits . $threeDigits;
 
         // Pastikan id_proposal yang dihasilkan unik
         while (Proposal::where('id_proposal', $id_proposal)->exists()) {
             $threeDigits = str_pad((int) $threeDigits + 1, 3, '0', STR_PAD_LEFT);
-            $id_proposal = 'P-' . $threeDigits;
+            $id_proposal = 'P-' . $twoDigits . $threeDigits;
         }
 
         // Buat proposal baru

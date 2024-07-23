@@ -1,10 +1,12 @@
 <x-app-layout>
     <div x-data="{ showPrint: false }" class="container mx-auto mt-10">
         <!-- Kop Laporan (hidden by default) -->
-        <div x-show="showPrint" class="print-header mb-10" style="display: none;">
+        <div x-show="showPrint" class="print-header   mb-10 border-b-2 pb-4" style="display: none; border-bottom: 3px double black;">
             <div class="flex items-center justify-center">
-                <img src="{{ asset('img/logo-ustj.png') }}" alt="Logo Kampus" class="mr-4" style="max-height: 100px;">
-                <div class="text-start">
+                <div class="">
+                    <img src="{{ asset('img/logo-ustj.png') }}" alt="Logo Kampus"  style="max-height: 100px;" class="pr-4">
+                </div>
+                <div class="text-center ps-4">
                     <h2 class="text-2xl font-bold">Universitas Sains Dan Teknologi Jayapura</h2>
                     <h3 class="text-xl">Fakultas Ilmu Komputer Dan Manajemen</h3>
                     <h3 class="text-xl">Program Studi Teknik Informatika</h3>
@@ -12,7 +14,7 @@
             </div>
         </div>
 
-        <h1 class="text-2xl font-bold mb-5">Data Proposal</h1>
+        <h1 class="text-2xl font-semibold mb-5">Data Proposal</h1>
         
         <div class="flex flex-col md:flex-row justify-between items-center mb-2 print-hide">
             <form action="{{ route('ketua-prodi.laporan.index') }}" method="GET" class="flex-1 md:mr-4 mb-4 md:mb-0">
@@ -92,12 +94,13 @@
             </tbody>
         </table>
         <!-- Footer Laporan (hidden by default) -->
-    <div x-show="showPrint" class="print-footer mt-20" style="display: none;">
-        <p class="text-lg ">Mengetahui:</p>
-        <p class="mb-12">Ketua Prodi</p>
-        <p class="font-bold underline">Rizkial Achmad, S.Kom., M.T</p>
-        <p class="">NIDS. 1208098108</p>
-        
+    <div x-show="showPrint" class="print-footer mt-20 border-1" style="display: none;">
+        <div class="start">
+            <p class="text-lg ">Mengetahui:</p>
+            <p class="mb-12">Ketua Prodi</p>
+            <p class="font-bold underline">Rizkial Achmad, S.Kom., M.T</p>
+            <p class="">NIDS. 1208098108</p>
+        </div>
     </div>
     </div>
 

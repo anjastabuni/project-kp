@@ -1,10 +1,12 @@
 <x-layout>
     <div x-data="{ showPrint: false }" class="container mx-auto mt-10">
          <!-- Kop Laporan (hidden by default) -->
-         <div x-show="showPrint" class="print-header mb-10" style="display: none;">
+         <div x-show="showPrint" class="print-header   mb-10 border-b-2 pb-4" style="display: none; border-bottom: 3px double black;">
             <div class="flex items-center justify-center">
-                <img src="{{ asset('img/logo-ustj.png') }}" alt="Logo Kampus" class="mr-4" style="max-height: 100px;">
-                <div class="text-start">
+                <div class="">
+                    <img src="{{ asset('img/logo-ustj.png') }}" alt="Logo Kampus"  style="max-height: 100px;" class="pr-4">
+                </div>
+                <div class="text-center ps-4">
                     <h2 class="text-2xl font-bold">Universitas Sains Dan Teknologi Jayapura</h2>
                     <h3 class="text-xl">Fakultas Ilmu Komputer Dan Manajemen</h3>
                     <h3 class="text-xl">Program Studi Teknik Informatika</h3>

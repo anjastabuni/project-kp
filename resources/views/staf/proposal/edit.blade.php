@@ -6,16 +6,6 @@
             @method('PUT')
             <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-                    <!-- ID Proposal -->
-                    <div class="col-span-1">
-                        <label class="block">
-                            <span class="text-gray-700">ID Proposal</span>
-                            <input
-                                type="text" name="id_proposal" value="{{ $proposal->id_proposal }}" readonly
-                                class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                            />
-                        </label>
-                    </div>
                     <!-- NPM -->
                     <div class="col-span-1">
                         <label class="block">

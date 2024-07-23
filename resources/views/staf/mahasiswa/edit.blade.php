@@ -1,6 +1,6 @@
 <x-layout>
     <div class="py-12">
-        <h2 class="text-2xl font-bold">Tambah data Mahasiswa</h2>
+        <h2 class="text-2xl font-bold">Edit data Mahasiswa</h2>
         <form action="{{ route('staf.mahasiswa.update', $mahasiswa->npm) }}" method="post">
             @csrf
             @method('PUT')
@@ -48,7 +48,7 @@
             </label>
             
           </div>
-          <button type="submit" class="mt-5 w-full rounded-md bg-green-500 text-white px-2 py-2 hover:bg-green-700">Tambahkan</button>
+          <button type="submit" class="mt-5 w-full rounded-md bg-yellow-500 text-gray-800 px-4 py-2 hover:bg-yellow-600 transition-colors duration-300">Perbaruhi</button>
         </div>
         </form>
       </div>

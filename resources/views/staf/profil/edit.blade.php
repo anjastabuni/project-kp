@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="container mx-auto mt-10">
-        <h1 class="text-2xl font-bold mb-5 text-gray-900">Edit Profil</h1>
+    <div class="container mx-auto mt-10 max-w-lg">
+        <h1 class="text-2xl font-bold text-center mb-5 text-gray-900">Edit Profil</h1>
 
         <form action="{{ route('staf.profil.update', $user->id) }}" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md">
             @csrf

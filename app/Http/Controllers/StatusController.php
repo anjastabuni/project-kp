@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class StatusController extends Controller
@@ -38,6 +39,9 @@ class StatusController extends Controller
             'status' => 'required|string|max:50',
             'keterangan' => 'required|string|max:255',
         ]);
+        // Tambahkan nilai baru ke ENUM
+        DB::statement("ALTER TABLE statuses MODIFY COLUMN status ENUM('Accepted', 'In Progress', '{$request->status}')");
+
 
         Status::create([
             'id_status' => $request->id_status,
@@ -85,8 +89,15 @@ class StatusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id_status)
     {
-        //
+
+        $status = Status::where('id_status', $id_status)->firstOrFail();
+
+
+        $status->delete();
+
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('staf.status.index')->with('success', 'Data Status berhasil dihapus');
     }
 }

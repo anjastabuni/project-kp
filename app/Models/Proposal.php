@@ -15,6 +15,7 @@ class Proposal extends Model
         'pembimbing',
         'tgl_pengajuan',
         'id_status',
+        'ket',
     ];
 
     public function mahasiswa()

@@ -47,8 +47,9 @@ class ProposalController extends Controller
             'id_mahasiswa' => 'required|string|max:8|exists:mahasiswas,npm',
             'judul' => 'required|string|max:255',
             'pembimbing' => 'required|string|max:50',
-            'tgl_pengajuan' => 'required|date',
+            'tgl_pengajuan' => 'required|string|max:4',
             'id_status' => 'required|string|max:6|exists:statuses,id_status',  // Validasi untuk id_status
+            'ket' => 'required|string|max:255',
         ]);
 
         // Ambil mahasiswa berdasarkan npm
@@ -59,12 +60,16 @@ class ProposalController extends Controller
         $threeDigits = substr($request->id_mahasiswa, -3);
         $id_proposal = 'P-' . $twoDigits . $threeDigits;
 
-        // Pastikan id_proposal yang dihasilkan unik
-        while (Proposal::where('id_proposal', $id_proposal)->exists()) {
-            $threeDigits = str_pad((int) $threeDigits + 1, 3, '0', STR_PAD_LEFT);
-            $id_proposal = 'P-' . $twoDigits . $threeDigits;
-        }
+        // // Pastikan id_proposal yang dihasilkan unik
+        // while (Proposal::where('id_proposal', $id_proposal)->exists()) {
+        //     $threeDigits = str_pad((int) $threeDigits + 1, 3, '0', STR_PAD_LEFT);
+        //     $id_proposal = 'P-' . $twoDigits . $threeDigits;
+        // }
 
+        // Cek apakah id_proposal sudah ada
+        if (Proposal::where('id_proposal', $id_proposal)->exists()) {
+            return redirect()->back()->withErrors(['id_proposal' => 'NPM tersebut sudah memiliki proposal.']);
+        }
         // Buat proposal baru
         Proposal::create([
             'id_proposal' => $id_proposal,
@@ -73,6 +78,7 @@ class ProposalController extends Controller
             'pembimbing' => $request->pembimbing,
             'tgl_pengajuan' => $request->tgl_pengajuan,
             'id_status' => $request->id_status,
+            'ket' => $request->ket,
         ]);
 
         return redirect()->route('staf.proposal.index')->with('success', 'Proposal berhasil ditambahkan');
@@ -109,20 +115,44 @@ class ProposalController extends Controller
             'id_mahasiswa' => 'required|string|max:8|exists:mahasiswas,npm',
             'judul' => 'required|string|max:255',
             'pembimbing' => 'required|string|max:50',
-            'tgl_pengajuan' => 'required|date',
+            'tgl_pengajuan' => 'required|string|max:4',
             'id_status' => 'required|string|max:6|exists:statuses,id_status',
+            'ket' => 'required|string|max:255',
         ]);
 
         $proposal = Proposal::findOrFail($id_proposal);
-        $proposal->id_mahasiswa = $request->id_mahasiswa;
+
+        // Ambil ID Mahasiswa baru dari request
+        $newMahasiswaId = $request->id_mahasiswa;
+
+        // Ambil 2 digit pertama dan 3 digit terakhir dari NPM baru untuk ID Proposal
+        $twoDigits = substr($newMahasiswaId, 0, 2);
+        $threeDigits = substr($newMahasiswaId, -3);
+        $newIdProposal = 'P-' . $twoDigits . $threeDigits;
+
+        // Cek jika ID Proposal baru sudah ada dan bukan untuk proposal yang sedang diperbarui
+        if (Proposal::where('id_proposal', $newIdProposal)->where('id_proposal', '!=', $id_proposal)->exists()) {
+            return redirect()->back()->withErrors(['id_proposal' => 'NPM sudah ada untuk mahasiswa lain.']);
+        }
+
+        // Update proposal
+        $proposal->id_mahasiswa = $newMahasiswaId;
         $proposal->judul = $request->judul;
         $proposal->pembimbing = $request->pembimbing;
         $proposal->tgl_pengajuan = $request->tgl_pengajuan;
         $proposal->id_status = $request->id_status;
+        $proposal->ket = $request->ket;
+
+        // Hanya update ID Proposal jika ID Mahasiswa berubah
+        if ($proposal->id_proposal != $newIdProposal) {
+            $proposal->id_proposal = $newIdProposal;
+        }
+
         $proposal->save();
 
         return redirect()->route('staf.proposal.index')->with('success', 'Proposal berhasil diperbarui');
     }
+
 
 
     /**

@@ -12,7 +12,7 @@ class Mahasiswa extends Model
         'npm',
         'nama',
         'angkatan',
-        'email',
+        // 'email',
         'telp',
     ];
 

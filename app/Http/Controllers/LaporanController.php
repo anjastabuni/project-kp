@@ -24,16 +24,17 @@ class LaporanController extends Controller
         if ($search) {
             $query->whereHas('mahasiswa', function ($q) use ($search) {
                 $q->where('id_mahasiswa', 'like', "%$search%")
-                    ->orWhere('nama', 'like', "%$search%");
+                    ->orWhere('nama', 'like', "%$search%")
+                    ->orWhere('angkatan', 'like', "%$search%");
             });
         }
 
         // Filter berdasarkan tahun angkatan jika ada
-        if ($tahun) {
-            $query->whereHas('mahasiswa', function ($q) use ($tahun) {
-                $q->whereYear('angkatan', $tahun);
-            });
-        }
+        // if ($tahun) {
+        //     $query->whereHas('mahasiswa', function ($q) use ($tahun) {
+        //         $q->whereYear('angkatan', $tahun);
+        //     });
+        // }
 
         // Filter berdasarkan status jika ada
         if ($statusFilter) {

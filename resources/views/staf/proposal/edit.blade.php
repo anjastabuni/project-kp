@@ -50,13 +50,26 @@
                     <!-- Tanggal Pengajuan -->
                     <div class="col-span-1">
                         <label class="block">
-                            <span class="text-gray-700">Tanggal Pengajuan</span>
+                            <span class="text-gray-700">Semester Genap</span>
                             <input
-                                type="date" name="tgl_pengajuan" value="{{ old('tgl_pengajuan', $proposal->tgl_pengajuan) }}"
+                                type="text" name="tgl_pengajuan" value="{{ old('tgl_pengajuan', $proposal->tgl_pengajuan) }}"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
                             />
                             @error('tgl_pengajuan')
                                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>  <!-- Menambahkan pesan error untuk tgl_pengajuan -->
+                            @enderror
+                        </label>
+                    </div>
+                    <!-- Keterangan -->
+                    <div class="col-span-1">
+                        <label class="block">
+                            <span class="text-gray-700">Keterangan</span>
+                            <input
+                                type="text" name="ket" value="{{ old('ket', $proposal->ket) }}"
+                                class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
+                            />
+                            @error('ket')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>  <!-- Menambahkan pesan error untuk pembimbing -->
                             @enderror
                         </label>
                     </div>
@@ -66,7 +79,7 @@
                             <span class="text-gray-700">Status Proposal</span>
                             <select
                                 name="id_status"
-                                class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
+                                class="mt-1 py-2 pl-3 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
                             >
                                 <option value="{{ old('id_status', $proposal->id_status) }}">Pilih Status</option>
                                 @foreach($statuses as $status)

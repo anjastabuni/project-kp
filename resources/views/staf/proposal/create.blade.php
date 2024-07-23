@@ -53,13 +53,28 @@
                     <!-- Tanggal Pengajuan -->
                     <div class="col-span-1">
                         <label class="block">
-                            <span class="text-gray-700">Tanggal Pengajuan</span>
+                            <span class="text-gray-700">Semester Genap</span>
                             <input
-                                type="date" name="tgl_pengajuan"
+                                type="text" name="tgl_pengajuan"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
-                                value="{{ old('tgl_pengajuan') }}"
+                                value="{{ old('tgl_pengajuan') }}" placeholder="masukan Tahun contoh: 2024"
                             />
                             @error('tgl_pengajuan')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </label>
+                    </div>
+                    <!-- keterangan -->
+                    <div class="col-span-1">
+                        <label class="block">
+                            <span class="text-gray-700">Keterangan</span>
+                            <input
+                                type="text" name="ket"
+                                class="mt-1 block w-full rounded-md bg-gray-100 border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-0"
+                                placeholder="keterangan proposal"
+                                value="{{ old('ket') }}"
+                            />
+                            @error('ket')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </label>

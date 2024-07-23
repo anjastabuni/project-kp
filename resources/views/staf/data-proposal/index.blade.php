@@ -32,14 +32,14 @@
             </form>
             
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <form action="{{ route('staf.data-proposal.index') }}" method="GET" class="flex-1">
+                {{-- <form action="{{ route('staf.data-proposal.index') }}" method="GET" class="flex-1">
                     <select name="tahun" class="w-full px-6 pr-9 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" onchange="this.form.submit()">
                         <option value="">Filter Tahun</option>
                         <option value="2020" {{ request('tahun') == '2020' ? 'selected' : '' }}>2020</option>
                         <option value="2019" {{ request('tahun') == '2019' ? 'selected' : '' }}>2019</option>
                         <option value="2018" {{ request('tahun') == '2018' ? 'selected' : '' }}>2018</option>
                     </select>
-                </form>
+                </form> --}}
                 <form action="{{ route('staf.data-proposal.index') }}" method="GET" class="flex-1">
                     <select name="status" class="w-full px-6 pr-9 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" onchange="this.form.submit()">
                         <option value="">Filter Status</option>
@@ -64,11 +64,12 @@
                     <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">No</th>
                     <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">NPM</th>
                     <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Nama Mahasiswa</th>
-                    <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Judul Proposal</th>
-                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Dosen Pembimbing</th>
-                    <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Status</th>
+                    <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Judul Tugas Akhir</th>
+                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Pembimbing</th>
+                    {{-- <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Status</th> --}}
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Keterangan</th>
-                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Telp</th>
+                    <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Semester Genap</th>
+                    {{-- <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Telp/WA</th> --}}
                 </tr>
             </thead>
             <tbody class="text-gray-700">
@@ -79,9 +80,10 @@
                         <td class="py-3 px-4 border border-gray-300">{{ $proposal->mahasiswa->nama ?? 'N/A'}}</td>
                         <td class="py-3 px-4 border border-gray-300">{{ $proposal->judul ?? 'N/A'}}</td>
                         <td class="py-3 px-4 border border-gray-300">{{ $proposal->pembimbing ?? 'N/A'}}</td>
-                        <td class="py-3 px-4 border border-gray-300">{{ $proposal->status->status ?? 'N/A'}}</td>
+                        {{-- <td class="py-3 px-4 border border-gray-300">{{ $proposal->status->status ?? 'N/A'}}</td> --}}
                         <td class="py-3 px-4 border border-gray-300">{{ $proposal->status->keterangan ?? 'N/A'}}</td>
-                        <td class="py-3 px-4 border border-gray-300">{{ $proposal->mahasiswa->telp ?? 'N/A'}}</td>
+                        <td class="py-3 px-4 border border-gray-300">{{ $proposal->tgl_pengajuan ?? 'N/A'}}</td>
+                        {{-- <td class="py-3 px-4 border border-gray-300">{{ $proposal->mahasiswa->telp ?? 'N/A'}}</td> --}}
                     </tr>
                 @empty
                     <tr>
@@ -92,11 +94,12 @@
         </table>
         <!-- Footer Laporan (hidden by default) -->
     <div x-show="showPrint" class="print-footer mt-20" style="display: none;">
-        <p class="text-lg ">Mengetahui:</p>
-        <p class="mb-12">Ketua Prodi</p>
-        <p class="font-bold underline">Rizkial Achmad, S.Kom., M.T</p>
-        <p class="">NIDS. 1208098108</p>
-        
+        <div class="text-end">
+            <p class="text-lg ">Mengetahui:</p>
+            <p class="mb-12">Ketua Prodi</p>
+            <p class="font-bold underline">Rizkial Achmad, S.Kom., M.T</p>
+            <p class="">NIDS. 1208098108</p>
+        </div>
     </div>
     </div>
     <style>

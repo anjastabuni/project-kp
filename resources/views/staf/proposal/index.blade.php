@@ -34,7 +34,8 @@
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">NIM</th>
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Judul Proposal</th>
                     <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Dosen Pembimbing</th>
-                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Tanggal Pengajuan</th>
+                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Semester Genap</th>
+                    <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Ket</th>
                     <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Opsi</th>
                 </tr>
             </thead>
@@ -46,6 +47,7 @@
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->judul }}</td>
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->pembimbing }}</td>
                     <td class="py-3 px-4 border border-gray-300">{{ $proposal->tgl_pengajuan }}</td>
+                    <td class="py-3 px-4 border border-gray-300">{{ $proposal->ket }}</td>
                     <td class="py-3 px-4 border  border-gray-300 flex space-x-2">
                         <a href="{{ route('staf.proposal.edit', $proposal->id_proposal) }}" class="bg-yellow-500 text-gray-800 px-3 py-1 rounded hover:bg-yellow-600 transition-colors duration-300">Edit</a>
                         <form action="{{ route('staf.proposal.destroy', $proposal->id_proposal) }}" method="POST"  class="delete-form">

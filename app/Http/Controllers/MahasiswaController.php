@@ -35,7 +35,7 @@ class MahasiswaController extends Controller
             'npm' => 'required|string|max:8|unique:mahasiswas,npm',
             'nama' => 'required|string|max:50',
             'angkatan' => 'required|integer|digits:4|between:1900,2099', // Validasi tahun 4 digit
-            'email' => 'required|string|email|max:50|unique:mahasiswas,email',
+            // 'email' => 'required|string|email|max:50|unique:mahasiswas,email',
             'telp' => 'required|string|max:13',
         ]);
 
@@ -43,7 +43,7 @@ class MahasiswaController extends Controller
             'npm' => $request->npm,
             'nama' => $request->nama,
             'angkatan' => $request->angkatan,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'telp' => $request->telp,
         ]);
 
@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
             'npm' => 'required|string|max:8|exists:mahasiswas,npm',
             'nama' => 'required|string|max:50',
             'angkatan' => 'required|string|max:10',  // Sesuaikan dengan kolom di migration
-            'email' => 'required|string|email|max:50|unique:mahasiswas,email,' . $npm . ',npm',
+            // 'email' => 'required|string|email|max:50|unique:mahasiswas,email,' . $npm . ',npm',
             'telp' => 'required|string|max:13',
         ]);
 
@@ -86,7 +86,7 @@ class MahasiswaController extends Controller
         $mahasiswa->update([
             'nama' => $request->nama,
             'angkatan' => $request->angkatan,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'telp' => $request->telp,
         ]);
 

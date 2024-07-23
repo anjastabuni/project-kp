@@ -19,8 +19,8 @@
                   <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">NPM</th>
                   <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Nama Mahasiswa</th>
                   <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Angkatan</th>
-                  <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Email</th>
-                  <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Telp</th>
+                  {{-- <th class="w-3/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Email</th> --}}
+                  <th class="w-2/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Telp/WA</th>
                   <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm border border-gray-300">Opsi</th>
               </tr>
           </thead>
@@ -31,7 +31,7 @@
                   <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->npm }}</td>
                   <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->nama }}</td>
                   <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->angkatan }}</td>
-                  <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->email }}</td>
+                  {{-- <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->email }}</td> --}}
                   <td class="py-3 px-4 border border-gray-300">{{ $mahasiswa->telp }}</td>
                   <td class="py-3 px-4 border border-gray-300 flex space-x-2">
                       <a href="{{ route('staf.mahasiswa.edit', $mahasiswa->npm) }}" class="bg-yellow-500 text-gray-800 px-3 py-1 rounded hover:bg-yellow-600 transition-colors duration-300">Edit</a>

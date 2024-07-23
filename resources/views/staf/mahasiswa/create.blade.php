@@ -62,7 +62,7 @@
                         </label>
                     </div>
                     <!-- Email -->
-                    <div class="col-span-1">
+                    {{-- <div class="col-span-1">
                         <label for="email" class="block">
                             <span class="text-gray-700">Email</span>
                             <input
@@ -75,7 +75,7 @@
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </label>
-                    </div>
+                    </div> --}}
                     <!-- Telp -->
                     <div class="col-span-1">
                         <label for="telp" class="block">

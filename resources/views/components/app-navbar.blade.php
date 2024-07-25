@@ -19,7 +19,7 @@
       </a>
       <a href="{{ route('ketua-prodi.profil.index') }}" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
         <i class="fas fa-user-cog text-gray-400 mr-3"></i>
-        <span>Manajemen Profil</span>
+        <span>Profil</span>
       </a>
       <a href="/logout" class="flex items-center py-2.5 px-4 text-white hover:bg-gray-700 transition duration-200">
         <i class="fas fa-sign-out-alt text-gray-400 mr-3"></i>
